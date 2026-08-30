@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Universe Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="../css/universe.css">
+
+  <!-- Global UI -->
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+
+  <div id="universe-app">
+
+    <!-- Header -->
+    <header class="universe-header">
+      <h1>Universe Generator</h1>
+      <p>Galaxies • Stars • Planets • Nebulae • Cosmic Noise</p>
+
+      <button class="back-btn" onclick="goToPage('../index.html')">← Back to Menu</button>
+    </header>
+
+    <!-- Main Universe Area -->
+    <main class="universe-main">
+
+      <!-- Universe Canvas -->
+      <canvas id="universe-canvas"></canvas>
+
+      <!-- Tools Panel -->
+      <div class="universe-tools">
+        <h3>Generate</h3>
+
+        <button class="universe-btn" data-action="galaxy">New Galaxy</button>
+        <button class="universe-btn" data-action="nebula">Nebula Cloud</button>
+        <button class="universe-btn" data-action="stars">Star Field</button>
+        <button class="universe-btn" data-action="planet">Random Planet</button>
+
+        <h3>View</h3>
+        <button class="universe-btn" data-action="zoomIn">Zoom In</button>
+        <button class="universe-btn" data-action="zoomOut">Zoom Out</button>
+
+        <button class="universe-btn danger" data-action="clear">Clear Universe</button>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- JS Engines -->
+  <script src="../js/ui.js" defer></script>
+  <script src="../js/weather.js" defer></script>
+  <script src="../js/worldgen.js" defer></script>
+  <script src="../js/engine.js" defer></script>
+
+</body>
+</html>
