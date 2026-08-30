@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Super Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="../css/tools.css">
+
+  <!-- Global UI -->
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+
+  <div id="tools-app">
+
+    <!-- Header -->
+    <header class="tools-header">
+      <h1>Super Tools</h1>
+      <p>Colors • Gradients • Patterns • Shapes • Noise • Randomizers</p>
+
+      <button class="back-btn" onclick="goToPage('../index.html')">← Back to Menu</button>
+    </header>
+
+    <!-- Main Tools Area -->
+    <main class="tools-main">
+
+      <!-- Tools Canvas -->
+      <canvas id="tools-canvas"></canvas>
+
+      <!-- Tools Panel -->
+      <div class="tools-panel">
+        <h3>Generators</h3>
+
+        <button class="tool-btn" data-tool="color">Color Picker</button>
+        <button class="tool-btn" data-tool="gradient">Gradient Maker</button>
+        <button class="tool-btn" data-tool="noise">Noise Texture</button>
+        <button class="tool-btn" data-tool="pattern">Pattern Maker</button>
+
+        <h3>Drawing</h3>
+        <button class="tool-btn" data-tool="circle">Draw Circle</button>
+        <button class="tool-btn" data-tool="square">Draw Square</button>
+        <button class="tool-btn" data-tool="line">Draw Line</button>
+
+        <h3>Randomizers</h3>
+        <button class="tool-btn" data-tool="randomColor">Random Color</button>
+        <button class="tool-btn" data-tool="randomShape">Random Shape</button>
+
+        <button class="tool-btn danger" data-tool="clear">Clear Canvas</button>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- JS Engines -->
+  <script src="../js/ui.js" defer></script>
+  <script src="../js/tools.js" defer></script>
+  <script src="../js/engine.js" defer></script>
+
+</body>
+</html>
