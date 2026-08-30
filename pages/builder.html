@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Builder World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="../css/builder.css">
+
+  <!-- Global UI -->
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+
+  <div id="builder-app">
+
+    <!-- Header -->
+    <header class="builder-header">
+      <h1>Builder World</h1>
+      <p>Place Blocks • Remove Blocks • Paint Terrain</p>
+
+      <button class="back-btn" onclick="goToPage('../index.html')">← Back to Menu</button>
+    </header>
+
+    <!-- Main Builder Area -->
+    <main class="builder-main">
+
+      <!-- World Grid -->
+      <canvas id="builder-canvas"></canvas>
+
+      <!-- Tools Panel -->
+      <div class="builder-tools">
+        <h3>Blocks</h3>
+
+        <button class="block-btn" data-block="grass">Grass</button>
+        <button class="block-btn" data-block="dirt">Dirt</button>
+        <button class="block-btn" data-block="stone">Stone</button>
+        <button class="block-btn" data-block="water">Water</button>
+        <button class="block-btn" data-block="wood">Wood</button>
+        <button class="block-btn" data-block="sand">Sand</button>
+
+        <h3>Actions</h3>
+        <button class="block-btn" data-block="erase">Erase</button>
+        <button class="block-btn danger" data-block="clear">Clear All</button>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- JS Engines -->
+  <script src="../js/ui.js" defer></script>
+  <script src="../js/worldgen.js" defer></script>
+  <script src="../js/engine.js" defer></script>
+
+</body>
+</html>
