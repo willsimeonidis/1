@@ -1,108 +1,86 @@
 /* --------------------------------------------------
-   ENGINE.JS — MAIN SANDBOX ENGINE
-   Connects:
-   - Canvas
-   - Physics engine
-   - FX engine
-   - Tools panel
-   - Mouse input
+   ENGINE.JS — GLOBAL UTILITIES + PAGE NAVIGATION
+   Works with:
+   - physics.js        (Physics Sandbox)
+   - ai.js             (Creature AI World)
+   - weather.js        (Universe Generator)
+   - tools.js          (Super Tools Mode)
 -------------------------------------------------- */
 
-let currentTool = "sand";
-let canvas, ctx;
-let mouseDown = false;
+/* --------------------------------------------------
+   NAVIGATION
+-------------------------------------------------- */
+function goToPage(path) {
+  window.location.href = path;
+}
 
 /* --------------------------------------------------
-   INIT SANDBOX
+   GLOBAL UTILS
+   Shared by weather.js, tools.js, chaos.js, etc.
+-------------------------------------------------- */
+function rand(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+/* --------------------------------------------------
+   MODE START WRAPPERS
+   These are here so your engine can "start" modes
+   if you ever want to hook into them later.
+   Right now, physics.js / ai.js / weather.js / tools.js
+   already use DOMContentLoaded internally, so these
+   are safe no-ops.
+-------------------------------------------------- */
+function startPhysicsSandbox() {
+  // Physics Sandbox is already initialized in physics.js
+  // This wrapper exists so your engine.js can call it
+  // later if you want more control.
+}
+
+function startCreatureAI() {
+  // Creature AI World is already initialized in ai.js
+}
+
+function startUniverse() {
+  // Universe Generator is already initialized in weather.js
+}
+
+function startTools() {
+  // Super Tools Mode is already initialized in tools.js
+}
+
+/* --------------------------------------------------
+   PAGE DETECTION
+   This block makes sure your engine knows which
+   mode page is currently active.
 -------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
-  canvas = document.getElementById("sandbox-canvas");
-  ctx = canvas.getContext("2d");
 
-  initPhysics(canvas);
-  initTools();
-  initMouse();
-
-  sandboxLoop();
-});
-
-/* --------------------------------------------------
-   TOOL BUTTONS
--------------------------------------------------- */
-function initTools() {
-  const buttons = document.querySelectorAll(".tool-btn");
-
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const tool = btn.dataset.tool;
-
-      if (tool === "clear") {
-        particles = [];
-        fxParticles = [];
-        return;
-      }
-
-      currentTool = tool;
-    });
-  });
-}
-
-/* --------------------------------------------------
-   MOUSE INPUT
--------------------------------------------------- */
-function initMouse() {
-  canvas.addEventListener("mousedown", e => {
-    mouseDown = true;
-    spawnAtMouse(e);
-  });
-
-  canvas.addEventListener("mouseup", () => {
-    mouseDown = false;
-  });
-
-  canvas.addEventListener("mousemove", e => {
-    if (mouseDown) spawnAtMouse(e);
-  });
-}
-
-/* --------------------------------------------------
-   SPAWN PARTICLES AT MOUSE
--------------------------------------------------- */
-function spawnAtMouse(e) {
-  const rect = canvas.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  switch (currentTool) {
-    case "sand":
-    case "water":
-    case "lava":
-    case "smoke":
-    case "electric":
-      for (let i = 0; i < 4; i++) {
-        createParticle(x + rand(-4, 4), y + rand(-4, 4), currentTool);
-      }
-      break;
-
-    case "tnt":
-      explosion(x, y);
-      break;
+  // Physics Sandbox
+  if (document.getElementById("sandbox-canvas")) {
+    startPhysicsSandbox();
   }
-}
 
-/* --------------------------------------------------
-   MAIN LOOP
--------------------------------------------------- */
-function sandboxLoop() {
-  // Physics engine updates particles
-  // FX engine updates visual effects
-  // Both render onto the same canvas
+  // Creature AI World
+  if (document.getElementById("creature-canvas")) {
+    startCreatureAI();
+  }
 
-  // Physics draws first
-  renderParticles();
+  // Universe Generator
+  if (document.getElementById("universe-canvas")) {
+    startUniverse();
+  }
 
-  // FX draws on top
-  fxLoop(ctx);
+  // Super Tools Mode
+  if (document.getElementById("tools-canvas")) {
+    startTools();
+  }
 
-  requestAnimationFrame(sandboxLoop);
-}
+  // If you ever re-add Chaos Mode:
+  // if (document.getElementById("chaos-canvas")) {
+  //   startChaos();
+  // }
+});
