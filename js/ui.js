@@ -1,85 +1,51 @@
 /* --------------------------------------------------
-   UI.JS — GLOBAL USER INTERFACE CONTROLS
-   Applies to ALL pages in the Super Website
+   UI.JS — SHARED UI HELPERS + BUTTON EFFECTS
 -------------------------------------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
-  fadeInPage();
-  enhanceMenuCards();
+
+    /* --------------------------------------------------
+       BUTTON CLICK EFFECT
+    -------------------------------------------------- */
+    document.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("mousedown", () => {
+            btn.style.transform = "scale(0.95)";
+        });
+
+        btn.addEventListener("mouseup", () => {
+            btn.style.transform = "scale(1)";
+        });
+
+        btn.addEventListener("mouseleave", () => {
+            btn.style.transform = "scale(1)";
+        });
+    });
+
+    /* --------------------------------------------------
+       BUTTON HOVER EFFECT
+    -------------------------------------------------- */
+    document.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("mouseover", () => {
+            btn.style.filter = "brightness(1.15)";
+        });
+
+        btn.addEventListener("mouseout", () => {
+            btn.style.filter = "brightness(1)";
+        });
+    });
+
+    /* --------------------------------------------------
+       PANEL TOGGLE (if any mode uses it)
+    -------------------------------------------------- */
+    const toggles = document.querySelectorAll("[data-toggle]");
+    toggles.forEach(t => {
+        t.addEventListener("click", () => {
+            const target = document.getElementById(t.dataset.toggle);
+            if (!target) return;
+
+            const visible = target.style.display !== "none";
+            target.style.display = visible ? "none" : "block";
+        });
+    });
+
 });
-
-/* --------------------------------------------------
-   PAGE FADE-IN EFFECT
--------------------------------------------------- */
-function fadeInPage() {
-  const body = document.body;
-  body.style.opacity = 0;
-  body.style.transition = "opacity 0.8s ease";
-
-  requestAnimationFrame(() => {
-    body.style.opacity = 1;
-  });
-}
-
-/* --------------------------------------------------
-   MENU CARD INTERACTION EFFECTS
--------------------------------------------------- */
-function enhanceMenuCards() {
-  const cards = document.querySelectorAll(".menu-card");
-
-  cards.forEach(card => {
-    card.addEventListener("mouseenter", () => {
-      card.classList.add("hovered");
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.classList.remove("hovered");
-    });
-
-    card.addEventListener("click", () => {
-      playClickFlash(card);
-    });
-  });
-}
-
-/* --------------------------------------------------
-   CLICK FLASH EFFECT
--------------------------------------------------- */
-function playClickFlash(card) {
-  const flash = document.createElement("div");
-  flash.className = "click-flash";
-
-  flash.style.position = "absolute";
-  flash.style.inset = "0";
-  flash.style.borderRadius = "inherit";
-  flash.style.background = "rgba(255,255,255,0.15)";
-  flash.style.pointerEvents = "none";
-  flash.style.animation = "flashOut 0.4s ease forwards";
-
-  card.style.position = "relative";
-  card.appendChild(flash);
-
-  setTimeout(() => flash.remove(), 400);
-}
-
-/* --------------------------------------------------
-   GLOBAL UTILITY FUNCTIONS
--------------------------------------------------- */
-
-/* Smooth page navigation */
-function goToPage(url) {
-  document.body.style.opacity = 0;
-  setTimeout(() => {
-    window.location.href = url;
-  }, 300);
-}
-
-/* Random helper */
-function rand(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-/* Clamp helper */
-function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
-}
