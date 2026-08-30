@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Physics Sandbox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="../css/sandbox.css">
+
+  <!-- Global UI -->
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+
+  <div id="sandbox-app">
+
+    <!-- Header -->
+    <header class="sandbox-header">
+      <h1>Physics Sandbox</h1>
+      <p>Sand • Water • Lava • Smoke • Electricity • Explosions</p>
+
+      <button class="back-btn" onclick="goToPage('../index.html')">← Back to Menu</button>
+    </header>
+
+    <!-- Main Sandbox Area -->
+    <main class="sandbox-main">
+      <canvas id="sandbox-canvas"></canvas>
+
+      <!-- Tools Panel -->
+      <div class="tools-panel">
+        <h3>Tools</h3>
+
+        <button class="tool-btn" data-tool="sand">Sand</button>
+        <button class="tool-btn" data-tool="water">Water</button>
+        <button class="tool-btn" data-tool="lava">Lava</button>
+        <button class="tool-btn" data-tool="smoke">Smoke</button>
+        <button class="tool-btn" data-tool="electric">Electric</button>
+        <button class="tool-btn" data-tool="tnt">TNT</button>
+
+        <button class="tool-btn danger" data-tool="clear">Clear All</button>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- JS Engines -->
+  <script src="../js/ui.js" defer></script>
+  <script src="../js/engine.js" defer></script>
+  <script src="../js/physics.js" defer></script>
+  <script src="../js/particles.js" defer></script>
+
+</body>
+</html>
