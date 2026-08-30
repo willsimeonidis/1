@@ -1,1 +1,69 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-08-30",
+    "description": "Global world storage for the Super-Website (Physics, Builder, Creatures, Universe, Tools, Chaos)"
+  },
 
+  "settings": {
+    "fpsLimit": 60,
+    "theme": "dark",
+    "autosave": true,
+    "autosaveInterval": 5000,
+    "chaosLevel": 1
+  },
+
+  "presets": {
+    "physics": {
+      "gravity": 0.5,
+      "airResistance": 0.02,
+      "defaultParticleCount": 50
+    },
+
+    "builder": {
+      "gridSize": 32,
+      "snap": true,
+      "defaultBlockColor": "#ffffff"
+    },
+
+    "creatures": {
+      "defaultType": "slime",
+      "maxCreatures": 200,
+      "hungerRateMultiplier": 1
+    },
+
+    "universe": {
+      "defaultZoom": 1,
+      "starDensity": 300,
+      "nebulaChance": 0.1,
+      "galaxySize": 800
+    },
+
+    "tools": {
+      "defaultTool": "color",
+      "lineWidth": 4,
+      "randomColorMode": "hsl"
+    },
+
+    "chaos": {
+      "maxChaosObjects": 1000,
+      "explosionPower": 5,
+      "gravityStrength": 1.5,
+      "windStrength": 4,
+      "creatureMultiplier": 3,
+      "blockMultiplier": 3,
+      "starMultiplier": 5,
+      "nebulaMultiplier": 4,
+      "planetMultiplier": 2
+    }
+  },
+
+  "saves": {
+    "physicsWorlds": [],
+    "builderWorlds": [],
+    "creatureWorlds": [],
+    "universeWorlds": [],
+    "toolsCanvases": [],
+    "chaosWorlds": []
+  }
+}
