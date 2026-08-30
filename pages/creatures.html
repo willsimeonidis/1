@@ -5,55 +5,35 @@
   <title>Creature AI World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Page-specific CSS -->
   <link rel="stylesheet" href="../css/creatures.css">
-
-  <!-- Global UI -->
   <link rel="stylesheet" href="../css/global.css">
 </head>
 <body>
 
-  <div id="creature-app">
-
-    <!-- Header -->
-    <header class="creature-header">
-      <h1>Creature AI World</h1>
-      <p>Digital Life • Needs • Personality • Movement • Reactions</p>
-
-      <button class="back-btn" onclick="goToPage('../index.html')">← Back to Menu</button>
-    </header>
-
-    <!-- Main Creature Area -->
-    <main class="creature-main">
-
-      <!-- World Canvas -->
-      <canvas id="creature-canvas"></canvas>
-
-      <!-- Tools Panel -->
-      <div class="creature-tools">
-        <h3>Spawn Creatures</h3>
-
-        <button class="creature-btn" data-type="slime">Slime</button>
-        <button class="creature-btn" data-type="fire">Fire Spirit</button>
-        <button class="creature-btn" data-type="water">Water Blob</button>
-        <button class="creature-btn" data-type="rock">Rock Golem</button>
-        <button class="creature-btn" data-type="ice">Ice Ghost</button>
-
-        <h3>World Actions</h3>
-        <button class="creature-btn" data-type="food">Drop Food</button>
-        <button class="creature-btn" data-type="danger">Spawn Danger</button>
-
-        <button class="creature-btn danger" data-type="clear">Clear All</button>
-      </div>
-
-    </main>
-
+  <div class="creature-header">
+    <h1>Creature AI World</h1>
+    <button class="back-btn" onclick="goToPage('../index.html')">← Back</button>
   </div>
 
-  <!-- JS Engines -->
-  <script src="../js/ui.js" defer></script>
+  <div class="creature-main">
+    <canvas id="creature-canvas"></canvas>
+
+    <div class="creature-panel">
+      <h3>Spawn</h3>
+      <button class="creature-btn" data-spawn="basic">Basic Creature</button>
+      <button class="creature-btn" data-spawn="fast">Fast Creature</button>
+      <button class="creature-btn" data-spawn="big">Big Creature</button>
+
+      <h3>Actions</h3>
+      <button class="creature-btn" data-action="food">Drop Food</button>
+      <button class="creature-btn" data-action="scatter">Scatter All</button>
+      <button class="creature-btn danger" data-action="clear">Clear All</button>
+    </div>
+  </div>
+
   <script src="../js/ai.js" defer></script>
   <script src="../js/engine.js" defer></script>
+  <script src="../js/ui.js" defer></script>
 
 </body>
 </html>
