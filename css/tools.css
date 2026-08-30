@@ -1,0 +1,111 @@
+/* --------------------------------------------------
+   SUPER TOOLS — PAGE STYLES
+-------------------------------------------------- */
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: system-ui, Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------
+   HEADER
+-------------------------------------------------- */
+.tools-header {
+  text-align: center;
+  padding: 25px 20px;
+  background: linear-gradient(180deg, #111, #000);
+  border-bottom: 2px solid #222;
+}
+
+.tools-header h1 {
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.tools-header p {
+  opacity: 0.7;
+  margin-top: 6px;
+}
+
+.back-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #222;
+  border: 2px solid #444;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: #444;
+  border-color: #fff;
+}
+
+/* --------------------------------------------------
+   MAIN TOOLS AREA
+-------------------------------------------------- */
+.tools-main {
+  display: flex;
+  height: calc(100vh - 140px);
+}
+
+/* Canvas (tools workspace) */
+#tools-canvas {
+  flex: 1;
+  background: #111;
+  display: block;
+  cursor: crosshair;
+}
+
+/* --------------------------------------------------
+   TOOLS PANEL
+-------------------------------------------------- */
+.tools-panel {
+  width: 220px;
+  background: #111;
+  border-left: 2px solid #222;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tools-panel h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Tool buttons */
+.tool-btn {
+  padding: 12px;
+  background: #222;
+  border: 2px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.2s;
+}
+
+.tool-btn:hover {
+  background: #333;
+  border-color: #fff;
+}
+
+.tool-btn.danger {
+  background: #400;
+  border-color: #600;
+}
+
+.tool-btn.danger:hover {
+  background: #600;
+  border-color: #f00;
+}
